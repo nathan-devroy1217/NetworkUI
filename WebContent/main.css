@@ -1,0 +1,105 @@
+body {
+	background-color: #2c4051;
+	font-family: Tahoma;
+	height: 100%;
+}
+
+#wrapper {
+	position: relative;
+	left: 20px;
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+h1 {
+	padding-top: 45px;
+	font-size: 42px;
+}
+
+#tableHolder {
+	padding-top: 50px;
+	width: 700px;
+	position: relative;
+	right: -240px;
+	height: 100%;
+}
+
+#leftBar {
+	    width: 200px;
+	    height: 100%;
+	    position: absolute;
+	    top: 200px;
+	    left: 50px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 40px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+hr { 
+	width:86%; 
+	height:3px; 
+	background: black; 
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+td a {
+	color: blue;
+}
+
+td a:hover {
+	color: red;
+}
+
+#borderWall {
+	background-color: #edeff2;
+	width: 95%;
+	position: fixed;
+	left: 25px;
+	top: 25px;
+	height: 100%;
+}
+
+#formFields {
+	position: absolute;
+	right: 75px;
+}
+
+h5 {
+	text-align: center;
+}
+
+#reportTable {
+	position: absolute;
+	width: 200px;
+	left: 50px;	
+	height: 100%;
+}
+
+#reportTableRaw {
+	font-size: 10px;
+	height: 100%;
+}
+
+label {
+	font-size: 12px;
+}
+
+html {
+	min-height: 100%;
+	position: relative;
+}
