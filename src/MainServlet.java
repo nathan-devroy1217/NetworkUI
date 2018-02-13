@@ -58,7 +58,18 @@ public class MainServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/reporting.jsp");
 			view.forward(request, response);
 		} else if(action.equalsIgnoreCase("download")) {
-			System.out.println(request.getParameter("name"));
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			String fileName = request.getParameter("name").toString();
+			response.setContentType("APPLICATION/OCTET-STREAM");
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+			FileInputStream fileInputStream = new FileInputStream(fileName); 
+			int i;
+			while ((i = fileInputStream.read()) != -1) {
+				out.write(i);
+			}
+			fileInputStream.close();
+			out.close();
 		}
 	}
 
