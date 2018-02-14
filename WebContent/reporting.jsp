@@ -13,12 +13,21 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/MySQLTesterPage/ericjgagnon-wickedpicker-2a8950a/src/wickedpicker.js"></script>
+	<link rel="stylesheet" href="/MySQLTesterPage/ericjgagnon-wickedpicker-2a8950a/stylesheets/wickedpicker.css">
 	<script>
 	  $( function() {
 		  $('.datepick').each(function(){
-			    $(this).datepicker();
+			    $(this).datepicker().datepicker("setDate", new Date());
 			});
-	  } );
+	  });
+	  
+	  $( function () {
+		  $('.timepicker').each(function(){
+			    $(this).wickedpicker();
+			});
+	  });
 	</script>
 	<title>Reporting</title>
 </head>
@@ -53,14 +62,22 @@
 			<h5><u>Use the below fields to query the network database for data</u></h5>
 			<label>Starting Date/Time:</label> 
 			<span>
-				<input type="text" name="startDate" class="datepick" id="datepicker1" />
+				<input type="text" name="startDate" class="datepick" id="datepicker1" size="14" />
+				<input type="text" name="timepicker" class="timepicker" id="timepicker1" size="11"/>
 			</span>
 			<br>
 			<label>Ending Date:</label> 
-			<span><input type="text" name="endDate" class="datepick" id="datepicker2" /></span>
+			<span>
+				<input type="text" name="endDate" class="datepick" id="datepicker2" size="14" />
+				<input type="text" name="timepicker" class="timepicker" id="timepicker2" size="11"/>
+			</span>
 			<br>
-			<input type="submit" value="Submit" name="submit" />
+			<form name="submitForm" method="post" >
+				<input type="submit" value="Submit" name="submit" />
+			</form>
 		</div>
 	</div>
 </body>
 </html>
+
+
