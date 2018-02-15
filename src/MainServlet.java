@@ -71,6 +71,24 @@ public class MainServlet extends HttpServlet {
 			}
 			fileInputStream.close();
 			out.close();
+		} else if(action.equalsIgnoreCase("reportGeneration")) {
+			String fromDate = request.getParameter("startDate").toString();
+			String fromTime = request.getParameter("timepicker1").toString();
+			String toDate = request.getParameter("endDate").toString();
+			String toTime = request.getParameter("timepicker2").toString();
+
+			CSVUtility util = new CSVUtility(fromDate, toDate, fromTime, toTime);
+			
+			System.out.println("Path: " + fileLister.getFiles().get(0).getPath());
+			
+			CSVExporter export = new CSVExporter(
+					fileLister.getFiles().get(0).getPath(),
+					util.getFormattedOutputString(util.getFromDate(), util.getFromTime()),
+					util.getFormattedOutputString(util.getToDate(), util.getToTime()),
+					1
+					);
+
+	        request.getRequestDispatcher("/reporting.jsp").forward(request, response);			
 		}
 	}
 
@@ -79,24 +97,7 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Dog Fart");
-		String fromDate = request.getParameter("datepicker1").toString();
-		String fromTime = request.getParameter("datepicker2").toString();
-		String toDate = request.getParameter("timepicker1").toString();
-		String toTime = request.getParameter("timepicker2").toString();
 
-		//Need to check formatting and conform to 'YYYY-MM-DD HH:MM:SS'//
-		System.out.println(fromDate + " " + fromTime + " " + toDate + " " + toTime);
-		//Should call a class that takes the data in, formats, then calls CSV creator class
-		//...From there, return CSV file and forward back to reporting.jsp.
-		//DONT FORGET TO ROUTE TO 404 PAGE FOR BAD REQUESTS
-
-		//Note: Wickedpicker format ==> 3:28 PM
-		//Note: Calendar format ==> MM/DD/YYYY
-			
-	
-		//Last line routes back to reporting.jsp
-		RequestDispatcher view = request.getRequestDispatcher("/reporting.jsp");
 	}
 
 }

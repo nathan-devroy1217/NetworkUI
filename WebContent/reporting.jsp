@@ -60,19 +60,19 @@
 		</div>
 		<div id="formFields">
 			<h5><u>Use the below fields to query the network database for data</u></h5>
-			<label>Starting Date/Time:</label> 
-			<span>
-				<input type="text" name="startDate" class="datepick" id="datepicker1" size="14" />
-				<input type="text" name="timepicker" class="timepicker" id="timepicker1" size="11"/>
-			</span>
-			<br>
-			<label>Ending Date:</label> 
-			<span>
-				<input type="text" name="endDate" class="datepick" id="datepicker2" size="14" />
-				<input type="text" name="timepicker" class="timepicker" id="timepicker2" size="11"/>
-			</span>
-			<br>
-			<form name="submitForm" method="post" >
+			<form name="submitForm" action="/MySQLTesterPage/reportgeneration.jsp" >
+				<span>
+					<label>Starting Date/Time:</label> 
+					<input type="text" name="startDate" class="datepick" id="datepicker1" size="14" />
+					<input type="text" name="timepicker1" class="timepicker" id="timepicker1" size="11"/>
+				</span>
+				<br>
+				<span>
+					<label>Ending Date:</label> 
+					<input type="text" name="endDate" class="datepick" id="datepicker2" size="14" />
+					<input type="text" name="timepicker2" class="timepicker" id="timepicker2" size="11"/>
+				</span>
+				<br>
 				<input type="submit" value="Submit" name="submit" />
 			</form>
 		</div>
