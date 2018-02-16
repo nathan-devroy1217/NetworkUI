@@ -78,16 +78,20 @@ public class MainServlet extends HttpServlet {
 			String toTime = request.getParameter("timepicker2").toString();
 
 			CSVUtility util = new CSVUtility(fromDate, toDate, fromTime, toTime);
+			System.out.println(util.isDateRangeValid());
+			if(!util.isDateRangeValid()) {
+				request.getRequestDispatcher("/errorpage.jsp").forward(request, response);
+				return;
+			}
 			
-			System.out.println("Path: " + fileLister.getFiles().get(0).getPath());
 			
 			CSVExporter export = new CSVExporter(
-					fileLister.getFiles().get(0).getPath(),
+					fileLister.getFiles().get(0).getParent(),
 					util.getFormattedOutputString(util.getFromDate(), util.getFromTime()),
 					util.getFormattedOutputString(util.getToDate(), util.getToTime()),
 					1
 					);
-
+			//response.sendRedirect("/reporting.jsp");
 	        request.getRequestDispatcher("/reporting.jsp").forward(request, response);			
 		}
 	}

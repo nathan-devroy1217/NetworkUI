@@ -1,3 +1,8 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 /**
  * CSV Utility class to format data and generate reports
  * @author Nathan Devroy
@@ -22,6 +27,36 @@ public class CSVUtility {
 		this.toDate = formatDate(toDate);
 		this.fromTime = formatTime(fromTime);
 		this.toTime = formatTime(toTime);
+	}
+	
+	public boolean isDateRangeValid() {
+		
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        // From and to dateTimes formatted as DateTimeObjects
+        LocalDateTime formatFromDateTime = LocalDateTime.parse((fromDate + " " + fromTime), formatter); 
+        LocalDateTime formatToDateTime = LocalDateTime.parse((toDate + " " + toTime), formatter); 
+       
+        // Generate current dateTime
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("Now: " + formatter.format(now));
+        // Test fromDateTime > Now
+        
+        if(formatFromDateTime.compareTo(now) >= 1) {
+        		return false;
+        }
+        
+        // Test toDateTime > Now
+        if(formatToDateTime.compareTo(now) >= 1) {
+    			return false;
+    		}
+        
+        // Test fromDateTime > toDateTime
+        if(formatToDateTime.compareTo(formatFromDateTime) <= -1) {
+    			return false;
+    		}
+        
+        return true;
 	}
 	
 	public String getFromDate() {
