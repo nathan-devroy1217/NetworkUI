@@ -29,7 +29,6 @@ public class MainServlet extends HttpServlet {
 
     public MainServlet() {
     		super();
-        dao = new NetworkDAO();
         fileLister = new FileLister();
     }
 
@@ -38,7 +37,8 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		if (action.equalsIgnoreCase("listPackets")) {
+		if (action.equalsIgnoreCase("listPackets")) {	
+	        dao = new NetworkDAO();
 			List<Packet> packetList = dao.getAllPacketData();
 			if (packetList.isEmpty()) {
 				System.out.println("List is empty....");
@@ -46,6 +46,7 @@ public class MainServlet extends HttpServlet {
 				System.out.println(packetList.get(0));
 			}
 			request.setAttribute("packets", packetList);
+			request.setAttribute("switch", "yes");
 			RequestDispatcher view = request.getRequestDispatcher("/Home.jsp");
 			view.forward(request, response);
 		} else if (action.equalsIgnoreCase("listFiles")) {
@@ -84,15 +85,14 @@ public class MainServlet extends HttpServlet {
 				return;
 			}
 			
-			
 			CSVExporter export = new CSVExporter(
 					fileLister.getFiles().get(0).getParent(),
 					util.getFormattedOutputString(util.getFromDate(), util.getFromTime()),
 					util.getFormattedOutputString(util.getToDate(), util.getToTime()),
 					1
 					);
-			//response.sendRedirect("/reporting.jsp");
-	        request.getRequestDispatcher("/reporting.jsp").forward(request, response);			
+			RequestDispatcher view = request.getRequestDispatcher("/reportingInbound.jsp");
+			view.forward(request, response);		
 		}
 	}
 

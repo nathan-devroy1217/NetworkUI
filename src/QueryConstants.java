@@ -16,5 +16,6 @@ public class QueryConstants {
 			"inner join device\n" + 
 			"on (device.ip_address = packet.src_ip) "
 			+ "order by access_dttm desc limit 4000;";
-	public static final String FILE_PATH = "/Users/emilydevroy/Desktop";
+	//public static final String FILE_PATH = "/Users/emilydevroy/Desktop";
+	public static final String FILE_PATH = "/home/pi/packet_reports";
 }

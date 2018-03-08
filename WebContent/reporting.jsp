@@ -14,8 +14,8 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="/MySQLTesterPage/ericjgagnon-wickedpicker-2a8950a/src/wickedpicker.js"></script>
-	<link rel="stylesheet" href="/MySQLTesterPage/ericjgagnon-wickedpicker-2a8950a/stylesheets/wickedpicker.css">
+	<script type="text/javascript" src="/MySQLTesterPage14/ericjgagnon-wickedpicker-2a8950a/src/wickedpicker.js"></script>
+	<link rel="stylesheet" href="/MySQLTesterPage14/ericjgagnon-wickedpicker-2a8950a/stylesheets/wickedpicker.css">
 	<script>
 	  $( function() {
 		  $('.datepick').each(function(){
@@ -50,7 +50,7 @@
 					<tbody>
 						<c:forEach items="${files}" var="file">
 							<tr>							
-								<td><a href="/MySQLTesterPage/downloadInbound.jsp?action=download&name=${file}" name="file"><c:out value="${file}" /></a></td>
+								<td><a href="/MySQLTesterPage14/downloadInbound.jsp?action=download&name=${file}" name="file"><c:out value="${file}" /></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -60,7 +60,7 @@
 		</div>
 		<div id="formFields">
 			<h5><u>Use the below fields to query the network database for data</u></h5>
-			<form name="submitForm" action="/MySQLTesterPage/reportgeneration.jsp" >
+			<form name="submitForm" action="/MySQLTesterPage14/reportgeneration.jsp" >
 				<span>
 					<label>Starting Date/Time:</label> 
 					<input type="text" name="startDate" class="datepick" id="datepicker1" size="14" />

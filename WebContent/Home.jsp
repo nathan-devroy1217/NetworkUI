@@ -22,6 +22,13 @@
 <title>Home Page</title>
 </head>
 <body>
+	<% 
+		String switchVal = request.getParameter("switch");
+		System.out.println("Switch: " + switchVal);
+		if(switchVal == null) {
+			out.println("<jsp:forward page=\"/MySQLTesterPage/src/MainServlet?action=listPackets\" />");
+		}
+	%>
 	<div id="borderWall">
 		<div id="wrapper">
 		<%
@@ -31,8 +38,8 @@
 		</div>
 		<h1 align="center">Devroy Family Network Stats</h1>
 		<hr>
-		<div id="tableHolder">
-			<table border=1 id="myTable" width="75%">
+		<div id="tableHolder">			
+			<table border=1 id="myTable">
 				<thead>
 					<tr>
 						<th>Access Date</th>
@@ -50,23 +57,24 @@
 							<td><c:out value="${packet.resolvedUri}" /></td>
 						</tr>
 					</c:forEach>
+		
 				</tbody>
 			</table>
 		</div>
 		<script>
 		$(document).ready(function(){
 	    		$('#myTable').dataTable({
-	    			"lengthMenu": [ [10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"] ]
+	    			"lengthMenu": [ [10, 25], [10, 25] ]
 	    		});
 	   	});
 		</script>
 		<div id="leftBar">
 			<ul>
 				<li><a href="http://192.168.1.1/Main_Login.asp">Router Gateway</a></li>
-				<li><a href="/MySQLTesterPage/reportingInbound.jsp">Reporting Tools</a></li>
-				<li><a href="">Cloud Storage</a></li>
+				<li><a href="/MySQLTesterPage14/reportingInbound.jsp">Reporting Tools</a></li>
+				<li><a href="smb://raspberrypi/share/cloud_files">Cloud Storage</a></li>
 			</ul>
 		</div>
-	</div>>
+	</div>
 </body>
 </html>
